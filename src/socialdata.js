@@ -134,10 +134,10 @@ const socialdata = [
 },
 {
     id: 20,
-    name: 'discord',
-    iconPath: require("./icons/discord.png"),
-    baseUrl:'Tan Phat#0123',
-    color: '#5865F2'
+    name: 'googleplus',
+    iconPath: require("./icons/google-plus.png"),
+    baseUrl:'hoangtanphat97.xm@gmail.com',
+    color: '#DB4A39'
 }
 ]
 export default socialdata;
