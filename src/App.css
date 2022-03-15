@@ -28,7 +28,7 @@ p {
 }
 body {
   font-family: 'Telegraf-Regular' !important;
-  background: url('./img/richard-horvath-_nwaetf6qo0-un.jpg');
+  background: url('./img/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -192,3 +192,14 @@ li.nav-item button{
   margin-right: 20px;
 } */
 
+.generate-btn:hover {
+  font-weight: bold;
+  transform:scale(1.2);
+}
+
+table {
+  border-collapse: none !important;
+}
+.table>:not(caption)>*>* {
+  border-bottom-width: 0px !important;
+}

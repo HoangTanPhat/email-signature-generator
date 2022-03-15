@@ -189,16 +189,16 @@ function App() {
       <Container className="py-5 d-flex flex-column">
         <h1
           className="text-uppercase fw-bold fs-1 text-center m-auto"
-          style={{ color: "white" }}
+          // style={{ color: "white" }}
         >
           EMAIL SIGNATURE GENERATOR
         </h1>
-        <p
+        {/* <p
           className="text-uppercase fs-5 text-center m-auto"
           style={{ color: "white" }}
         >
           Try it out
-        </p>
+        </p> */}
       </Container>
       <Container className="d-flex flex-row">
         <Container
