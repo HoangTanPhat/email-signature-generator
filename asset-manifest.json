@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/email-signature-generator/static/css/main.6a6dbbd8.css",
+    "main.js": "/email-signature-generator/static/js/main.8044156a.js",
+    "static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg": "/email-signature-generator/static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.f5522991bebfade8ea23.jpg",
+    "static/media/IMG_7248_2.jpg": "/email-signature-generator/static/media/IMG_7248_2.73842fb178fcb38182d2.jpg",
+    "static/media/PPTelegraf-UltraBold.otf": "/email-signature-generator/static/media/PPTelegraf-UltraBold.c7dfda2145c1bb9ee3e9.otf",
+    "static/media/PPTelegraf-Regular.otf": "/email-signature-generator/static/media/PPTelegraf-Regular.14ef6b05efc2391733a1.otf",
+    "static/media/PPTelegraf-UltraLight.otf": "/email-signature-generator/static/media/PPTelegraf-UltraLight.4a2f96a95de82c364433.otf",
+    "index.html": "/email-signature-generator/index.html",
+    "main.6a6dbbd8.css.map": "/email-signature-generator/static/css/main.6a6dbbd8.css.map",
+    "main.8044156a.js.map": "/email-signature-generator/static/js/main.8044156a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a6dbbd8.css",
+    "static/js/main.8044156a.js"
+  ]
+}
