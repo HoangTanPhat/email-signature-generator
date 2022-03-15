@@ -1,38 +1,194 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Telegraf-Regular';
+  src: url(./fonts/PPTelegraf-Regular.otf);
+}
+@font-face {
+  font-family: 'Telegraf-Light';
+  src: url(./fonts/PPTelegraf-UltraLight.otf);
+}
+@font-face {
+  font-family: 'Telegraf-Bold';
+  src: url(./fonts/PPTelegraf-UltraBold.otf);
+}
+.fw-bold {
+  font-family: 'Telegraf-Bold';
+}
+.fw-light {
+  font-family: 'Telegraf-Light';
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height:2;
+}
+p {
+  margin-bottom: 0 !important;
+}
+body {
+  font-family: 'Telegraf-Regular' !important;
+  background: url('./img/richard-horvath-_nwaetf6qo0-un.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+input, select {
+  box-shadow: none !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.loading-text {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.dropdown-toggle::after {
+  display:none !important;
+}
+.form-control:disabled, .form-control[readonly] {
+  border: none;
+  padding: 0;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.disabled-class {
+  border: 1px solid #c3c3c3;
+}
+.required-field {
+  border-color: red !important;
+}
+
+.error-emptyfield, .error-numbertype {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 3rem;
+}
+
+.error-numbertype {
+  color: red !important;
+}
+
+.submit-btn:hover {
+  transform: scale(1.5);
+}
+.transition {
+  transition: all 0.5s ease-in-out !important;
+}
+.qr-code::after {
+  content:'x';
+  width: 50px;
+  height: auto;
+  position: absolute;
+  top:-2px;
+  right:0;
+}
+
+
+@media (max-width: 575.98px) {
+  #container {
+    padding-bottom: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+  .app-container {
+    /* min-width: 570px; */
+    width: 100% !important;
+    /* height: 70% !important; */
+  }
+  .warning-alert {
+    width:100% !important;
+    padding: 0 !important;
+    right: 0 !important; 
   }
 }
+
+@media (max-width: 767.98px) and (min-width: 576px) {
+  #container {
+    padding-bottom: 3rem;
+  }
+  .app-container {
+    width: 100% !important;
+    /* height: 70% !important; */
+  }
+  .warning-alert {
+    width:100% !important;
+    padding: 0 !important;
+    right: 0 !important; 
+  }
+}
+
+@media (max-width: 991.98px) and (min-width: 768px) {
+  #container {
+    padding-bottom: 3rem;
+  }
+  .app-container {
+    /* width: 80% !important; */
+    /* height: 80% !important; */
+  }
+}
+
+@media (max-width: 1199.98px) and (min-width: 992px){
+  #container {
+    padding-bottom: 3rem;
+  }
+  .app-container {
+    /* width: 60% !important; */
+    /* height: 80% !important; */
+  }
+}
+
+input:focus, input:active {
+  border: 1px solid black !important;
+}
+input[type="range"]:focus {
+  border: none !important;
+}
+.nav-tabs .nav-link {
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+  flex-grow: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 18px;  
+}
+.nav-link {
+  color: black !important;
+}
+li.nav-item {
+  flex-grow: 1;
+}
+
+li.nav-item button{
+  width:100%;
+}
+
+/* File upload */
+.file-upload-wrapper {
+  /* background-color:red; */
+  padding:3rem;
+  border: 1px black dashed;
+  border-radius: 1.2rem;
+}
+.input-fileupload {
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width:100%;
+  height:100%;
+}
+.social-icons {
+  width: 20px;
+  height:20px;
+}
+.all-icons a {
+  /* margin-top:20px; */
+  margin:7px;
+}
+/* .all-icons a:not(:last-child) {
+  margin-right: 20px;
+} */
+
