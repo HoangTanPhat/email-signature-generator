@@ -859,7 +859,6 @@ function App() {
           }}
         />
       </Container> */}
-      <img src={linkedin} />
     </Container>
   );
 }
