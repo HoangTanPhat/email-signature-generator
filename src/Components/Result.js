@@ -121,9 +121,9 @@ export default function Result({setSuccess}) {
                             <span className="info company">{userInfo.company}</span>
                             {userInfo.department != " " &&
                             <span className='info department position-relative'> &#8226; {userInfo.department}</span>}
-                            <p className="p-0"><span className="fw-bold">Phone: </span>{userInfo.phone}</p>
-                            <p className="p-0"><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
-                            <p className="p-0">{userInfo.caption}</p>
+                            <p className="m-0"><span className="fw-bold">Phone: </span>{userInfo.phone}</p>
+                            <p className="m-0"><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
+                            <p className="m-0">{userInfo.caption}</p>
                             <table>
                               <tr className="d-flex flex-row flex-wrap mt-2" style={{height: "30px"}}>
                               {socialLinks.map((link) => {
