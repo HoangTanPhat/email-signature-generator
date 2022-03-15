@@ -109,15 +109,15 @@ export default function Result({setSuccess}) {
                 }} ref={template1Ref}>
                     <tbody>
                       <tr className="d-flex flex-row flex-wrap">
-                        <td className="d-flex flex-wrap align-items-center justify-content-center p-4 flex-grow-0" style={{width: "30%"}}>
+                        <td className="d-flex flex-wrap align-items-center justify-content-center p-4 flex-grow-0" style={{width: "30%", justifyContent:"center", alignItems:"center"}}>
                           <a className="d-block" style={{width: `${imageWidthDynamic}px`, height: `${imageWidthDynamic}px`}}>
                             <img className="rounded-circle" src={userInfo.image} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
                           </a>
                         </td>
-                        <td className="py-4 px-4 flex-grow-1">
-                            <h2 onClick={() => chooseField('fieldName')} className="fw-bold">{userInfo.name}</h2>
-                            <hr />
-                            <h4 className="fw-bold">{userInfo.position}</h4>
+                        <td className="py-3 px-4 flex-grow-1">
+                            <h2 onClick={() => chooseField('fieldName')} className="fw-bold" style={{margin:"0"}}>{userInfo.name}</h2>
+                            <hr style={{margin: "0.5rem 0px"}} />
+                            <h4 style={{margin: "0p"}} className="fw-bold">{userInfo.position}</h4>
                             <span className="info company">{userInfo.company}</span>
                             {userInfo.department != " " &&
                             <span className='info department position-relative'> &#8226; {userInfo.department}</span>}
