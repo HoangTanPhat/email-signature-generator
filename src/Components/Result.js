@@ -108,7 +108,7 @@ export default function Result() {
                 }} ref={template1Ref}>
                     <tbody>
                       <tr className="d-flex flex-row flex-wrap">
-                        <td className="d-flex flex-wrap align-items-center justify-content-center p-4 flex-grow-0" style={{width: "35%"}}>
+                        <td className="d-flex flex-wrap align-items-center justify-content-center p-4 flex-grow-0" style={{width: "30%"}}>
                           <a className="d-block" style={{width: `${imageWidthDynamic}px`, height: `${imageWidthDynamic}px`}}>
                             <img className="rounded-circle" src={userInfo.image} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
                           </a>
@@ -136,18 +136,15 @@ export default function Result() {
                                     height: "30px",
                                     fill: color,
                                   }}>
-                                    <svg
-                            role="img"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                                    <img
+                                    src={iconPath}
+                            
                             style={{
                               display: "block",
                               width: "30px",
                               height: "30px",
                             }}
-                          >
-                            {iconPath}
-                          </svg>
+                          />
                                   </a>
                                   </td>
 

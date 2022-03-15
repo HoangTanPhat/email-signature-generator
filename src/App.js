@@ -703,18 +703,14 @@ function App() {
                             fill: color,
                           }}
                         >
-                          <svg
-                            role="img"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                          <img src={iconPath}
                             style={{
                               display: "block",
                               width: "40px",
                               height: "40px",
                             }}
-                          >
-                            {iconPath}
-                          </svg>
+                          />
+
                         </i>
                       </Form.Text>
                       <Form.Control
@@ -774,7 +770,7 @@ function App() {
                           }}
                           onClick={() => handleAddSocial(id, name, iconPath, baseUrl, color)}
                         >
-                          <svg
+                          {/* <svg
                             role="img"
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
@@ -786,7 +782,12 @@ function App() {
                           >
                             <title>{name}</title>
                             {iconPath}
-                          </svg>
+                          </svg> */}
+                          <img src={iconPath} style={{
+                              display: "block",
+                              width: "40px",
+                              height: "40px",
+                            }}/>
                         </a>
                       );
                     })}
