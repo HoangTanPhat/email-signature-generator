@@ -2,7 +2,7 @@
   "name": "email-signature-generator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hoangtanphat.github.io/email-signature-generator",
+  "homepage": "http://hoangtanphat.github.io/email-signature-generator/",
   "dependencies": {
     "-": "0.0.1",
     "@testing-library/jest-dom": "^5.16.2",
