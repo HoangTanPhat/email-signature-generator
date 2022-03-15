@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/email-signature-generator/static/css/main.6a6dbbd8.css",
-    "main.js": "/email-signature-generator/static/js/main.8af76dfb.js",
+    "main.css": "/email-signature-generator/static/css/main.5f8cf742.css",
+    "main.js": "/email-signature-generator/static/js/main.dd6da48d.js",
     "static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg": "/email-signature-generator/static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.f5522991bebfade8ea23.jpg",
     "static/media/IMG_7248_2.jpg": "/email-signature-generator/static/media/IMG_7248_2.73842fb178fcb38182d2.jpg",
     "static/media/PPTelegraf-UltraBold.otf": "/email-signature-generator/static/media/PPTelegraf-UltraBold.c7dfda2145c1bb9ee3e9.otf",
@@ -12,11 +12,11 @@
     "static/media/messenger.png": "/email-signature-generator/static/media/messenger.c0677ba4eafc20038e9e.png",
     "static/media/instagram.png": "/email-signature-generator/static/media/instagram.661a8d22097791cf8c6d.png",
     "index.html": "/email-signature-generator/index.html",
-    "main.6a6dbbd8.css.map": "/email-signature-generator/static/css/main.6a6dbbd8.css.map",
-    "main.8af76dfb.js.map": "/email-signature-generator/static/js/main.8af76dfb.js.map"
+    "main.5f8cf742.css.map": "/email-signature-generator/static/css/main.5f8cf742.css.map",
+    "main.dd6da48d.js.map": "/email-signature-generator/static/js/main.dd6da48d.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a6dbbd8.css",
-    "static/js/main.8af76dfb.js"
+    "static/css/main.5f8cf742.css",
+    "static/js/main.dd6da48d.js"
   ]
 }
