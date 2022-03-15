@@ -113,7 +113,7 @@ export default function Result() {
                             <img className="rounded-circle" src={userInfo.image} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
                           </a>
                         </td>
-                        <td className="py-2 px-4 flex-grow-1">
+                        <td className="py-4 px-4 flex-grow-1">
                             <h2 onClick={() => chooseField('fieldName')} className="fw-bold">{userInfo.name}</h2>
                             <hr />
                             <h4 className="fw-bold">{userInfo.position}</h4>
@@ -124,12 +124,12 @@ export default function Result() {
                             <p><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
                             <p>{userInfo.caption}</p>
                             <table>
-                              <tr className="d-flex flex-row flex-wrap">
+                              <tr className="d-flex flex-row flex-wrap" style={{height: "30px"}}>
                               {socialLinks.map((link) => {
                                 const {id, name, iconPath, color} = link;
                                 const obj = Object.values(socialTemplate);
                                 return (
-                                  <td className="me-2">
+                                  <td className="me-2" style={{height:"30px"}}>
                                   <a key={id} className="me-2" href={socialTemplate[name]} style={{
                                     display: "inline-flex flex-grow-1",
                                     width: "30px",
