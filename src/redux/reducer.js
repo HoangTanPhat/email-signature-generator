@@ -5,7 +5,7 @@ const initState = {
     {
       id: 1,
       name: "facebook",
-      iconPath: require("./../icons/facebook.png"),
+      iconPath: require("./../assests/facebook.png"),
       baseUrl: "https://www.facebook.com/",
       color: "#1877F2",
       url: "",
@@ -13,7 +13,7 @@ const initState = {
     {
       id: 2,
       name: "linkedin",
-      iconPath: require("./../icons/linkedin.png"),
+      iconPath: require("./../assests/linkedin.png"),
       baseUrl: "https://www.linkedin.com/",
       color: "#0A66C2",
       url: "",
@@ -21,7 +21,7 @@ const initState = {
     {
       id: 16,
       name: "instagram",
-      iconPath: require("./../icons/instagram.png"),
+      iconPath: require("./../assests/instagram.png"),
       baseUrl: "https://www.instagram.com/",
       color: "#E4405F",
       url: "",

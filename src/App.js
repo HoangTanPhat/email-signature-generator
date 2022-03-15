@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSocialAction, removeSocialAction, syncEmailInfoData, addSocialLinksToTemplate } from "./redux/actions";
 import Result from "./Components/Result";
 import avatar from './img/IMG_7248_2.jpg'
-
+import linkedin from './assests/linkedin.png'
 function App() {
   const [key, setKey] = useState("general");
   const [name, setName] = useState("Hoang Tan Phat");
@@ -59,7 +59,6 @@ function App() {
   const [socialBrandsList, setSocialBrandsList] = useState(socialdata);
   const [searchIcons, setSearchIcons] = useState("");
   const [isImageOnChange, setIsImageOnChange] = useState(false);
-
   
   // const [error, setError] = useState(false);
   // const [requestSent, setRequestSent] = useState(false);
@@ -802,7 +801,7 @@ function App() {
             <Result setSuccess={setSuccess}/>
         </Container>
       </Container>
-
+                  
        <Container
         className={`success-alert position-absolute transition d-flex align-items-center ${
           success ? "opacity-1" : "opacity-0"
@@ -860,6 +859,7 @@ function App() {
           }}
         />
       </Container> */}
+      <img src={linkedin} />
     </Container>
   );
 }
