@@ -124,7 +124,7 @@ export default function Result() {
                             <p><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
                             <p>{userInfo.caption}</p>
                             <table>
-                              <tr className="d-flex flex-row flex-wrap" style={{height: "30px"}}>
+                              <tr className="d-flex flex-row flex-wrap mt-2" style={{height: "30px"}}>
                               {socialLinks.map((link) => {
                                 const {id, name, iconPath, color} = link;
                                 const obj = Object.values(socialTemplate);
