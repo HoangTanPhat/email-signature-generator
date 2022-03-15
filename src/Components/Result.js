@@ -15,6 +15,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import socialdata from "../socialdata";
 import { useDispatch, useSelector } from "react-redux";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import html2canvas from 'html2canvas';
+
 
 export default function Result({setSuccess}) {
   const [copyText, setCopyText] = useState("");
@@ -63,30 +65,12 @@ export default function Result({setSuccess}) {
 	document.execCommand('copy');
 	window.getSelection().removeAllRanges();
   setSuccess(true);
-    // const doc = document;
-    // const text = element.current;
-    // let range;
-    // let selection;
-    //     range = doc.createRange();
-    //     range.setStart(text,0);
-    //     range.setEnd(text,0);
-    //     // range.select();
-    //     console.log(range);
-    //     console.log(range.toString());
-    // } else if ( window.getSelection ) {
+  }
 
-    //     selection = window.getSelection();
-
-    //     range = doc.createRange();
-    //     range.setStart(text,0);
-    //     range.setEnd(text,0);        
-    //     selection.removeAllRanges();
-    //     selection.addRange(range);
-    // }
-
-    // document.execCommand( 'copy' );
-    // window.getSelection().removeAllRanges();
-    // document.getElementById( 'clickMe' ).value = 'Copied to clipboard!';
+  const handleSaveAsImage = (el) => {
+    html2canvas(el).then(function(canvas) {
+      document.body.appendChild(canvas);
+  });
   }
   console.log(template1Ref.current);
   return (
@@ -198,6 +182,7 @@ export default function Result({setSuccess}) {
           <Button className="fs-5 flex-grow-1 rounded-pill mx-4 transition generate-btn"
             variant="primary"
             style={{ backgroundColor: "white", color:"black" , boxShadow: '0px 1px 30px rgba(0,0,0,.5)',  border: "none"}}
+            onClick={() => handleSaveAsImage(el)}
 
           >
             Save as Image
