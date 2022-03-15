@@ -16,7 +16,7 @@ import socialdata from "../socialdata";
 import { useDispatch, useSelector } from "react-redux";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-export default function Result() {
+export default function Result({setSuccess}) {
   const [copyText, setCopyText] = useState("");
   const userInfo = useSelector(info => info.emailInfo);
   const socialLinks = useSelector(link => link.socialList); 
@@ -62,6 +62,7 @@ export default function Result() {
  	}
 	document.execCommand('copy');
 	window.getSelection().removeAllRanges();
+  setSuccess(true);
     // const doc = document;
     // const text = element.current;
     // let range;
@@ -120,9 +121,9 @@ export default function Result() {
                             <span className="info company">{userInfo.company}</span>
                             {userInfo.department != " " &&
                             <span className='info department position-relative'> &#8226; {userInfo.department}</span>}
-                            <p><span className="fw-bold">Phone: </span>{userInfo.phone}</p>
-                            <p><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
-                            <p>{userInfo.caption}</p>
+                            <p className="p-0"><span className="fw-bold">Phone: </span>{userInfo.phone}</p>
+                            <p className="p-0"><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
+                            <p className="p-0">{userInfo.caption}</p>
                             <table>
                               <tr className="d-flex flex-row flex-wrap mt-2" style={{height: "30px"}}>
                               {socialLinks.map((link) => {
@@ -147,7 +148,6 @@ export default function Result() {
                           />
                                   </a>
                                   </td>
-
                                 )
                               })}
                               </tr>

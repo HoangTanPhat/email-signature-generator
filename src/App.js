@@ -34,6 +34,7 @@ function App() {
   const [bannerWidth, setBannerWidth] = useState(450);
   const [bannerLink, setBannerLink] = useState("");
   const [caption, setCaption] = useState("Contact me through:");
+  const [success, setSuccess] = useState(false);
   const [socialLink, setSocialLink] = useState({
     facebook:'',
     linkedin: '',
@@ -175,15 +176,16 @@ function App() {
   useEffect(() => {
     dispatch(addSocialLinksToTemplate(socialLink));
   },[socialLink])
-  // useEffect(() => {
-  //   const info = [name, company, position, department, phone, website, email, image, imageWidth, imageLink, banner, bannerWidth, bannerLink];
-  //   info.forEach((item, index) => {
-  //     if(item) dispatch(syncEmailInfoData([]))
-  //   })
-  // },[name, company, position, department, phone, website, email, image, imageWidth, imageLink, banner, bannerWidth, bannerLink])
+ 
+  useEffect(() => {
+    const timeout = setTimeout(()=> {
+      setSuccess(false);
+    },1500);
+    return () => clearTimeout(timeout)
+  },[success])
   return (
     <Container
-      className="d-flex align-items-center flex-column pb-5 pt-3"
+      className="d-flex align-items-center flex-column pb-5 pt-3 position-relative"
       id="container"
     >
       <Container className="py-5 d-flex flex-column">
@@ -797,29 +799,28 @@ function App() {
           </Tabs>
         </Container>
         <Container className="flex-grow-1 position-relative">
-            <Result isImageOnChange={isImageOnChange} imageWidthChange={imageWidth}/>
+            <Result setSuccess={setSuccess}/>
         </Container>
       </Container>
 
-      {/* <Container
-        className={`warning-alert position-absolute transition d-flex align-items-center ${
-          error ? "opacity-1" : "opacity-0"
+       <Container
+        className={`success-alert position-absolute transition d-flex align-items-center ${
+          success ? "opacity-1" : "opacity-0"
         }`}
         style={{
-          backgroundColor: "#e35c6a",
-          width: "400px",
-          height: "80px",
+          backgroundColor: "#5cb85c",
+          width: "300px",
+          height: "60px",
           top: "20px",
-          left: "50%",
+          right: "-50px",
           borderRadius: "1.3rem",
-          transform: "translateX(-50%)",
         }}
       >
         <span className="m-auto fs-6" style={{ color: "white" }}>
-          Something went wrong! Please check again
+          Copied to Clipboard
         </span>
       </Container>
-      <Container
+      {/* <Container
         fluid
         className={`position-absolute transition ${
           requestSent ? "d-block" : "d-none"
