@@ -111,7 +111,7 @@ export default function Result() {
                         <td className="d-flex flex-wrap align-items-center justify-content-center p-4 flex-grow-0" style={{width: "35%"}}>
                           <a className="d-block" style={{width: `${imageWidthDynamic}px`, height: `${imageWidthDynamic}px`}}>
                             <img className="rounded-circle" src={userInfo.image} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
-                          </a>
+                          </a>n
                         </td>
                         <td className="py-2 px-4 flex-grow-1">
                             <h2 onClick={() => chooseField('fieldName')} className="fw-bold">{userInfo.name}</h2>
