@@ -203,7 +203,3 @@ table {
 .table>:not(caption)>*>* {
   border-bottom-width: 0px !important;
 }
-.avatar-wrapper-template {
-  justify-content: center !important;
-  align-items: center !important;
-}
