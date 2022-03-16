@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/email-signature-generator/static/css/main.5f8cf742.css",
-    "main.js": "/email-signature-generator/static/js/main.cc26adcb.js",
+    "main.js": "/email-signature-generator/static/js/main.3c5f9600.js",
     "static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg": "/email-signature-generator/static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.f5522991bebfade8ea23.jpg",
     "static/media/IMG_7248_2.jpg": "/email-signature-generator/static/media/IMG_7248_2.a3433c917048f075ec33.jpg",
     "static/media/PPTelegraf-UltraBold.otf": "/email-signature-generator/static/media/PPTelegraf-UltraBold.c7dfda2145c1bb9ee3e9.otf",
@@ -11,12 +11,28 @@
     "static/media/twitter.png": "/email-signature-generator/static/media/twitter.894988327f8d68209e91.png",
     "static/media/messenger.png": "/email-signature-generator/static/media/messenger.c0677ba4eafc20038e9e.png",
     "static/media/instagram.png": "/email-signature-generator/static/media/instagram.661a8d22097791cf8c6d.png",
+    "static/media/snapchat.png": "/email-signature-generator/static/media/snapchat.26e27551758265bd2d5e.png",
+    "static/media/youtube.png": "/email-signature-generator/static/media/youtube.d252c6ec7a3c06ecc004.png",
+    "static/media/viber.png": "/email-signature-generator/static/media/viber.e66edc914f6e66a7b74f.png",
+    "static/media/zalo.png": "/email-signature-generator/static/media/zalo.ed60107f0b25e06507cf.png",
+    "static/media/tinder.png": "/email-signature-generator/static/media/tinder.d182449e75c842c9a049.png",
+    "static/media/tiktok.png": "/email-signature-generator/static/media/tiktok.7aa19d57efb5e9fe4063.png",
+    "static/media/whatsapp.png": "/email-signature-generator/static/media/whatsapp.52b78b20aa49b60c05ee.png",
+    "static/media/google-plus.png": "/email-signature-generator/static/media/google-plus.dfcd06b3b1c0fd400947.png",
+    "static/media/telegram.png": "/email-signature-generator/static/media/telegram.1a4e2e11c33928ae314b.png",
+    "static/media/reddit.png": "/email-signature-generator/static/media/reddit.5c672002e75f6b79c278.png",
+    "static/media/discord.png": "/email-signature-generator/static/media/discord.d07816aad2bc786c47e3.png",
+    "static/media/pinterest.png": "/email-signature-generator/static/media/pinterest.31e63deb48a5aef8e6e1.png",
+    "static/media/github.png": "/email-signature-generator/static/media/github.017990eeface4d12ef8b.png",
+    "static/media/tumblr.png": "/email-signature-generator/static/media/tumblr.bcd495bddcffa2335bcc.png",
+    "static/media/linkedin.png": "/email-signature-generator/static/media/linkedin.b97c92768b3f3adf0083.png",
+    "static/media/behance.png": "/email-signature-generator/static/media/behance.354dfa151259a7d3ff16.png",
     "index.html": "/email-signature-generator/index.html",
     "main.5f8cf742.css.map": "/email-signature-generator/static/css/main.5f8cf742.css.map",
-    "main.cc26adcb.js.map": "/email-signature-generator/static/js/main.cc26adcb.js.map"
+    "main.3c5f9600.js.map": "/email-signature-generator/static/js/main.3c5f9600.js.map"
   },
   "entrypoints": [
     "static/css/main.5f8cf742.css",
-    "static/js/main.cc26adcb.js"
+    "static/js/main.3c5f9600.js"
   ]
 }
