@@ -195,13 +195,13 @@ export default function Result({setSuccess, requestSent, setRequestSent}) {
           >
             Save as Image
           </Button>
-          <Button className="fs-5 flex-grow-1 rounded-pill mx-4 transition generate-btn"
+          {/* <Button className="fs-5 flex-grow-1 rounded-pill mx-4 transition generate-btn"
             variant="primary"
             style={{ backgroundColor: "white", color:"black", boxShadow: '0px 1px 30px rgba(0,0,0,.5)',  border: "none" }}
 
           >
             Copy Html
-          </Button>
+          </Button> */}
         </Container>
     </Container>
   )
