@@ -18,7 +18,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import html2canvas from 'html2canvas';
 
 
-export default function Result({setSuccess}) {
+export default function Result({setSuccess, requestSent, setRequestSent}) {
   const [copyText, setCopyText] = useState("");
   const userInfo = useSelector(info => info.emailInfo);
   const socialLinks = useSelector(link => link.socialList); 
@@ -29,6 +29,7 @@ export default function Result({setSuccess}) {
   const [imageWidthDynamic, setImageWidthDynamic] = useState(userInfo.imageWidth)
   const [bannerWidthDynamic, setBannerWidthDynamic] = useState(userInfo.bannerWidth)
   const template1Ref = useRef(null);
+
   const el = template1Ref.current;
   useEffect(() => {
     setImageWidthDynamic(userInfo.imageWidth)
@@ -68,11 +69,18 @@ export default function Result({setSuccess}) {
   }
 
   const handleSaveAsImage = (el) => {
-    html2canvas(el).then(function(canvas) {
-      document.body.appendChild(canvas);
-  });
+    html2canvas(el).then((canvas) => {
+    document.getElementById("saveAsImageContainer").appendChild(canvas);
+    setRequestSent(true);
+    return canvas
+  }).then(canvas => {
+    const image = canvas.toDataURL("image/jpg");
+    const a = document.createElement('a')
+    a.setAttribute('download', 'signature.jpg')
+    a.setAttribute('href', image)
+    a.click()
+  })
   }
-  console.log(template1Ref.current);
   return (
     <Container className="position-sticky" style={{top: "20%"}}>
         <Tabs 

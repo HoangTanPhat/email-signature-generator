@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSocialAction, removeSocialAction, syncEmailInfoData, addSocialLinksToTemplate } from "./redux/actions";
 import Result from "./Components/Result";
 import avatar from './img/IMG_7248_2.jpg'
-import linkedin from './assests/linkedin.png'
 function App() {
   const [key, setKey] = useState("general");
   const [name, setName] = useState("Hoang Tan Phat");
@@ -59,6 +58,7 @@ function App() {
   const [socialBrandsList, setSocialBrandsList] = useState(socialdata);
   const [searchIcons, setSearchIcons] = useState("");
   const [isImageOnChange, setIsImageOnChange] = useState(false);
+  const [requestSent, setRequestSent] = useState(false);
   
   // const [error, setError] = useState(false);
   // const [requestSent, setRequestSent] = useState(false);
@@ -143,10 +143,10 @@ function App() {
     dispatch(removeSocialAction(id))
   }
 
-  // const handleInfo = (e) => {
-  //   setName(e.target.value);
-  //   dispatch(syncEmailInfoData())
-  // }
+  const handleCloseModal = () => {
+    setRequestSent(false);
+    document.querySelector("canvas").remove();
+  }
 
   useEffect(() => {
     const info = {
@@ -800,7 +800,7 @@ function App() {
           </Tabs>
         </Container>
         <Container className="flex-grow-1 position-relative">
-            <Result setSuccess={setSuccess}/>
+            <Result setSuccess={setSuccess} requestSent={requestSent} setRequestSent={setRequestSent}/>
         </Container>
       </Container>
                   
@@ -821,19 +821,21 @@ function App() {
           Copied to Clipboard
         </span>
       </Container>
-      {/* <Container
+      <Container
         fluid
         className={`position-absolute transition ${
           requestSent ? "d-block" : "d-none"
         }`}
         style={{
           backgroundColor: "rgba(0,0,0,0.2)",
-          width: "100%",
+          width: "100vw",
+          left: "50%",
+          right: "50%",
+          marginLeft: "-50vw",
+          marginRight: "-50vw",
           height: "100%",
           top: "0",
-          left: "0",
           bottom: "0",
-          right: "0",
           backdropFilter: "blur(5px)",
         }}
       >
@@ -847,20 +849,23 @@ function App() {
             color: "white",
             cursor: "pointer",
           }}
-          onClick={() => setRequestSent(false)}
+          onClick={handleCloseModal}
         />
-        <img
-          className="position-absolute qr-code"
+        <div
+          id="saveAsImageContainer"
+          className="position-absolute"
           style={{
-            width: "350px",
+            width: "auto",
             height: "auto",
             top: "50%",
             left: "50%",
             transform: "translate(-50%,-50%)",
             borderRadius: "1.2rem",
           }}
-        />
-      </Container> */}
+          >
+
+        </div>
+      </Container>
     </Container>
   );
 }
