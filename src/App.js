@@ -429,6 +429,7 @@ function App() {
 
                       <FormControl
                         type="file"
+                        accept=".jpg,.jpeg,.png,.gif,.bmp"
                         onChange={onUploadImage}
                         className="position-absolute input-fileupload"
                         style={{ width: "100%" }}
@@ -554,6 +555,7 @@ function App() {
                       <span className="text-center">Choose file</span>
                       <FormControl
                         type="file"
+                        accept=".jpg,.jpeg,.png,.gif,.bmp"
                         onChange={onUploadBanner}
                         className="position-absolute input-fileupload"
                         style={{ width: "100%" }}

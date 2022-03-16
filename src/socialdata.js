@@ -1,3 +1,5 @@
+import youtube from './assests/youtube.png'
+import behance from './assests/behance.png'
 const socialdata = [
 {
     id: 1,
@@ -9,7 +11,7 @@ const socialdata = [
 {
     id: 2,
     name: 'linkedin',
-    iconPath: require("./assests/linkedin.png"),
+    iconPath: require('./assests/linkedin.png'),
     baseUrl:'https://www.linkedin.com/',
     color: "#0A66C2",
 },
@@ -23,14 +25,14 @@ const socialdata = [
 {
     id: 4,
     name: 'youtube',
-    iconPath: require("./assests/youtube.png"),
+    iconPath: youtube,
     baseUrl:'https://www.youtube.com/',
     color:"#FF0000"
 },
 {
     id: 5,
     name: 'behance',
-    iconPath: require("./assests/behance.png"),
+    iconPath: behance,
     baseUrl:'https://www.behance.net/',
     color: "#1769FF"
 },
