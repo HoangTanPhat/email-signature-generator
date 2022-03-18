@@ -19,8 +19,10 @@ function App() {
   const handleCloseModal = () => {
     setRequestSent(false);
     document.querySelector("canvas").remove();
+    document.body.style.overflow="auto";
   }
   return (
+  <>
     <Container
       className="d-flex align-items-center flex-column pb-5 pt-3 position-relative"
       id="container"
@@ -57,51 +59,52 @@ function App() {
           Copied to Clipboard
         </span>
       </Container>
-      <Container
-        fluid
-        className={`position-absolute transition ${
-          requestSent ? "d-block" : "d-none"
-        }`}
-        style={{
-          backgroundColor: "rgba(0,0,0,0.2)",
-          width: "100vw",
-          left: "50%",
-          right: "50%",
-          marginLeft: "-50vw",
-          marginRight: "-50vw",
-          height: "100%",
-          top: "0",
-          bottom: "0",
-          backdropFilter: "blur(5px)",
-        }}
-      >
-        <BsX
-          className="position-absolute"
-          style={{
-            width: "50px",
-            height: "auto",
-            top: "2rem",
-            right: "5rem",
-            color: "white",
-            cursor: "pointer",
-          }}
-          onClick={handleCloseModal}
-        />
-        <div
-          id="saveAsImageContainer"
-          className="position-absolute"
-          style={{
-            width: "auto",
-            height: "auto",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%,-50%)",
-            borderRadius: "1.2rem",
-          }}
-          >
-        </div>
-      </Container>
     </Container>
+    <Container
+    fluid
+    className={`position-fixed transition ${
+      requestSent ? "d-block" : "d-none"
+    }`}
+    style={{
+      backgroundColor: "rgba(0,0,0,0.2)",
+      width: "100vw",
+      left: "50%",
+      right: "50%",
+      height: "100vh",
+      top: "0",
+      left: "0",
+      right: "0",
+      bottom: "0",
+      backdropFilter: "blur(5px)",
+    }}
+  >
+    <BsX
+      className="position-absolute"
+      style={{
+        width: "50px",
+        height: "auto",
+        top: "2rem",
+        right: "5rem",
+        color: "white",
+        cursor: "pointer",
+      }}
+      onClick={handleCloseModal}
+    />
+    <div
+      id="saveAsImageContainer"
+      className="position-absolute"
+      style={{
+        width: "auto",
+        height: "auto",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%,-50%)",
+        borderRadius: "1.2rem",
+      }}
+      >
+    </div>
+  </Container>
+  </>
   );
 }
 
