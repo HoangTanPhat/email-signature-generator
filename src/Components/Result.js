@@ -1,24 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {
     Container,
-    FormControl,
     Tabs,
     Tab,
     TabContent,
     Button,
-    Row,
-    Col,
     Table
   } from "react-bootstrap";
-import InputGroup from "react-bootstrap/InputGroup";
 //   import { BsX, BsFillXCircleFill, BsFillCloudArrowUpFill } from "react-icons/bs";
-import socialdata from "../socialdata";
 import { useDispatch, useSelector } from "react-redux";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import html2canvas from 'html2canvas';
 
 
-export default function Result({setSuccess, requestSent, setRequestSent}) {
+export default function Result({setSuccess, setRequestSent}) {
   const [copyText, setCopyText] = useState("");
   const userInfo = useSelector(info => info.emailInfo);
   const socialLinks = useSelector(link => link.socialList); 
@@ -114,8 +109,15 @@ export default function Result({setSuccess, requestSent, setRequestSent}) {
                             <span className="info company">{userInfo.company}</span>
                             {userInfo.department != " " &&
                             <span className='info department position-relative'> &#8226; {userInfo.department}</span>}
+                            {userInfo.phone != " " &&
                             <p className="m-0"><span className="fw-bold">Phone: </span>{userInfo.phone}</p>
+                            }
+                            {userInfo.email != " " &&
+                            <p className="m-0"><span className="fw-bold">Email: </span>{userInfo.email}</p>
+                            }
+                            {userInfo.website != " " &&
                             <p className="m-0"><span className="fw-bold">Website: </span><a href={userInfo.website}>{userInfo.website}</a></p>
+                            }
                             <p className="m-0">{userInfo.caption}</p>
                             <table>
                               <tr className="d-flex flex-row flex-wrap mt-2" style={{height: "30px"}}>
