@@ -71,7 +71,7 @@ export default function Result({
 
   const handleSaveAsImage = (el) => {
     html2canvas(el, {
-      allowTaint: true
+      useCORS: true
     })
       .then((canvas) => {
         document.getElementById("saveAsImageContainer").appendChild(canvas);
