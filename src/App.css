@@ -203,3 +203,8 @@ table {
 .table>:not(caption)>*>* {
   border-bottom-width: 0px !important;
 }
+
+.nav-tabs .nav-link.active {
+  border-left: 0px !important;
+  border-right: 0px !important;
+}

@@ -18,9 +18,9 @@ export default async function uploadImagesToServer(url) {
             'Content-Type': 'application/x-www-form-urlencoded', 
     },
   }
-  ).then(response => {
+  )
+  .then(response => {
     responseUrl = response.data.data.url;
-    console.log(responseUrl)
 })
     .catch(err => console.log(JSON.stringify(err,null,4)));
   return responseUrl;

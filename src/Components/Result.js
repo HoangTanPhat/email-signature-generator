@@ -11,14 +11,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import html2canvas from 'html2canvas';
+import blankProfile from './../img/Blank-profile.png'
+import ReactLoading from 'react-loading';
+import bannerPlaceholder from './../img/banner-placeholder.jpg'
 
 
-export default function Result({setSuccess, setRequestSent}) {
+
+export default function Result({setSuccess, setRequestSent, isImageLoading, isBannerLoading}) {
   const [copyText, setCopyText] = useState("");
   const userInfo = useSelector(info => info.emailInfo);
   const socialLinks = useSelector(link => link.socialList); 
   const socialTemplate = useSelector(item => item.emailInfo.socialsAdded[0]);
-  console.log(socialTemplate);
   // const userInfoWidth = useSelector(width => width.emailInfo.imageWidth);
   const [key, setKey] = useState("template1");
   const [imageWidthDynamic, setImageWidthDynamic] = useState(userInfo.imageWidth)
@@ -98,8 +101,11 @@ export default function Result({setSuccess, setRequestSent}) {
                     <tbody>
                       <tr className="d-flex flex-row flex-wrap">
                         <td className="d-flex flex-wrap justify-content-center align-items-center p-4" style={{width: "30%", justifyContent:"center", alignItems:"center"}}>
-                          <a className="d-block" style={{width: `${imageWidthDynamic}px`, height: `${imageWidthDynamic}px`}}>
-                            <img className="rounded-circle" src={userInfo.image} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
+                          <a href={userInfo.imageLink != " " ? userInfo.imageLink : null} className="d-block rounded-circle position-relative" style={{width: `${imageWidthDynamic}px`, height: `${imageWidthDynamic}px`}}>
+                            {isImageLoading && <div className="position-absolute rounded-circle d-flex align-items-center justify-content-center" style={{backgroundColor:'rgba(0,0,0,0.2)', top: '0', left: '0', bottom: '0', right: '0'}}>
+                            <ReactLoading type="bubbles" color="white" height={'50%'} width={'50%'} className="d-block" />
+                            </div> }
+                            <img className="rounded-circle" src={userInfo.image != " " ? userInfo.image : blankProfile} style={{maxWidth: "100%", height: `${imageWidthDynamic}px`, objectFit:"cover", width:`${imageWidthDynamic}px`}} />  
                           </a>
                         </td>
                         <td className="py-3 px-4" style={{width: "70%"}}>
@@ -120,13 +126,14 @@ export default function Result({setSuccess, setRequestSent}) {
                             }
                             <p className="m-0">{userInfo.caption}</p>
                             <table>
+                              <tbody>
                               <tr className="d-flex flex-row flex-wrap mt-2" style={{height: "30px"}}>
                               {socialLinks.map((link) => {
                                 const {id, name, iconPath, color} = link;
                                 const obj = Object.values(socialTemplate);
                                 return (
-                                  <td className="me-2" style={{height:"30px"}}>
-                                  <a key={id} className="me-2" href={socialTemplate[name]} style={{
+                                  <td key={id} className="me-2" style={{height:"30px"}}>
+                                  <a className="me-2" href={socialTemplate[name]} style={{
                                     display: "inline-flex flex-grow-1",
                                     width: "30px",
                                     height: "30px",
@@ -146,14 +153,27 @@ export default function Result({setSuccess, setRequestSent}) {
                                 )
                               })}
                               </tr>
+                              </tbody>
                             </table>
                         </td>
                       </tr>
                       <tr>
-                        {userInfo.banner !== " " && 
-                        <a href={userInfo.bannerLink != " " ? userInfo.bannerLink : "#"} className="d-block p-0 my-3" style={{width: `${bannerWidthDynamic}px`, height: `${bannerWidthDynamic / 3}px`}}>
-                            <img src={userInfo.banner} style={{maxWidth: "100%", height: `${bannerWidthDynamic / 3}px`, objectFit:"cover", width:`${bannerWidthDynamic}px`}} />  
-                        </a>
+                      {isBannerLoading && <td  className="position-relative d-block p-0 my-3" style={{width: `${bannerWidthDynamic}px`, height: `${bannerWidthDynamic / 3}px`}}>
+                        <hr style={{margin: "0.5rem 0px", padding: "0px", backgroundColor:'currentcolor'}} />
+                            <div className="position-absolute d-flex align-items-center justify-content-center" style={{backgroundColor:'rgba(0,0,0,0.1)', top: '0', left: '0', bottom: '0', right: '0'}}>
+                            <ReactLoading type="bubbles" color="white" width={"50%"} className="d-flex justify-content-center" />
+                            </div> 
+                            <img src={bannerPlaceholder} style={{maxWidth: "100%", width: "100%", height: "100%", objectFit: "cover"}}/>
+                            </td>
+                            }
+                        {userInfo.banner !== " " && (
+                          <td>
+                          <hr style={{margin: "0.5rem 0px", padding: "0px", backgroundColor:'currentcolor'}} />
+<a href={userInfo.bannerLink != " " ? userInfo.bannerLink : null} className="position-relative d-block p-0 my-3" style={{width: `${bannerWidthDynamic}px`, height: `${bannerWidthDynamic / 3}px`}}>
+    <img src={userInfo.banner} style={{maxWidth: "100%", height: `${bannerWidthDynamic / 3}px`, objectFit:"cover", width:`${bannerWidthDynamic}px`}} />  
+</a>
+                          </td>
+                        )
                         }
                       </tr>
                     </tbody>

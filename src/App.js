@@ -7,9 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BsX } from "react-icons/bs";
 import Result from "./Components/Result";
 import GenerateBoard from "./Components/GenerateBoard";
+import avatar from "./img/IMG_7248_2.jpg";
+
 function App() {
   const [success, setSuccess] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
+  const [image, setImage] = useState(avatar);
+  const [isImageLoading, setIsImageLoading] = useState(false);
+  const [isBannerLoading, setIsBannerLoading] = useState(false);
+
   const handleCloseModal = () => {
     setRequestSent(false);
     document.querySelector("canvas").remove();
@@ -28,9 +34,9 @@ function App() {
 
       </Container>
       <Container className="d-flex flex-row">
-            <GenerateBoard setRequestSent={setRequestSent} requestSent={requestSent} success={success} setSuccess={setSuccess}/>
+            <GenerateBoard setRequestSent={setRequestSent} requestSent={requestSent} success={success} setSuccess={setSuccess} image={image} setImage={setImage} setIsImageLoading={setIsImageLoading} setIsBannerLoading={setIsBannerLoading}/>
         <Container className="flex-grow-1 position-relative">
-            <Result setSuccess={setSuccess} requestSent={requestSent} setRequestSent={setRequestSent}/>
+            <Result setSuccess={setSuccess} requestSent={requestSent} setRequestSent={setRequestSent} image={image} isImageLoading={isImageLoading} isBannerLoading={isBannerLoading}/>
         </Container>
       </Container>
                   

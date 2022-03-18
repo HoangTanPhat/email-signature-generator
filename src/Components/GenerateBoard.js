@@ -22,8 +22,10 @@ import {
 import avatar from "./../img/IMG_7248_2.jpg";
 import uploadImagesToServer from "../useAPI";
 import qs from "qs";
+import blankProfile from './../img/Blank-profile.png'
 
-export default function GenerateBoard({ setSuccess, success }) {
+
+export default function GenerateBoard({ setSuccess, success, image, setImage, setIsImageLoading, setIsBannerLoading }) {
   const [key, setKey] = useState("general");
   const [name, setName] = useState("Hoang Tan Phat");
   const [company, setCompany] = useState("");
@@ -32,7 +34,7 @@ export default function GenerateBoard({ setSuccess, success }) {
   const [phone, setPhone] = useState("+84 123456789");
   const [website, setWebsite] = useState("https://hoangtanphatvn.com");
   const [email, setEmail] = useState("hoangtanphat97.xm@gmail.com");
-  const [image, setImage] = useState(avatar);
+  // const [image, setImage] = useState(avatar);
   const [imageWidth, setImageWidth] = useState(150);
   const [imageLink, setImageLink] = useState("");
   const [banner, setBanner] = useState("");
@@ -74,29 +76,43 @@ export default function GenerateBoard({ setSuccess, success }) {
   const dispatch = useDispatch();
   const socialListAdded = useSelector((state) => state.socialList);
 
-  const onUploadImage = () => {
+  const handleEventImageUpload = (reader) => {
+    const url = reader.result;
+    const request = uploadImagesToServer(url);
+    request.then((response) => {
+        setIsImageLoading(false);
+        setImage(response)
+    });
+  }
+
+  const onUploadImage = (setIsImageLoading) => {
+    setIsImageLoading(true);
     const file = imageInputRef.current.files[0];
     const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      const url = reader.result;
-      const request = uploadImagesToServer(url);
-      request.then((response) => setImage(response));
-    });
+    reader.addEventListener("load", () => handleEventImageUpload(reader));
     reader.readAsDataURL(file);
+    return () => reader.removeEventListener("load",() => handleEventImageUpload(reader));
   };
 
   const cancelImageUpload = () => {
     setImage("");
   };
 
-  const onUploadBanner = () => {
+  const handleEventBannerUpload = (reader) => {
+    const url = reader.result;
+    const request = uploadImagesToServer(url);
+    request.then((response) => {
+        setIsBannerLoading(false);
+        setBanner(response);
+    });
+  }
+  const onUploadBanner = (setIsBannerLoading) => {
+    setIsBannerLoading(true);
     const file = bannerInputRef.current.files[0];
     const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      const url = reader.result;
-      setBanner(url);
-    });
+    reader.addEventListener("load", () => handleEventBannerUpload(reader));
     reader.readAsDataURL(file);
+    return () => reader.removeEventListener("load",() => handleEventBannerUpload(reader))
   };
 
   const cancelBannerUpload = () => {
@@ -416,7 +432,7 @@ export default function GenerateBoard({ setSuccess, success }) {
                   <FormControl
                     type="file"
                     accept=".jpg,.jpeg,.png,.gif,.bmp"
-                    onChange={onUploadImage}
+                    onChange={() => onUploadImage(setIsImageLoading)}
                     className="position-absolute input-fileupload"
                     style={{ width: "100%" }}
                     ref={imageInputRef}
@@ -453,14 +469,14 @@ export default function GenerateBoard({ setSuccess, success }) {
                       height: "25px",
                       cursor: "pointer",
                     }}
-                    ref={closeImageRef}
+                    // ref={closeImageRef}
                     onClick={cancelImageUpload}
                   />
                 </div>
               </div>
             </InputGroup>
             <div className="py-1 px-4 align-items-center">
-              <p class="text-muted fst-italic" style={{ fontSize: "13px" }}>
+              <p className="text-muted fst-italic" style={{ fontSize: "13px" }}>
                 Recommend using square photo (150px x 150px)
               </p>
             </div>
@@ -544,7 +560,7 @@ export default function GenerateBoard({ setSuccess, success }) {
                   <FormControl
                     type="file"
                     accept=".jpg,.jpeg,.png,.gif,.bmp"
-                    onChange={onUploadBanner}
+                    onChange={() => onUploadBanner(setIsBannerLoading)}
                     className="position-absolute input-fileupload"
                     style={{ width: "100%" }}
                     ref={bannerInputRef}
@@ -581,14 +597,14 @@ export default function GenerateBoard({ setSuccess, success }) {
                       height: "25px",
                       cursor: "pointer",
                     }}
-                    ref={closeBannerRef}
+                    // ref={closeBannerRef}
                     onClick={cancelBannerUpload}
                   />
                 </div>
               </div>
             </InputGroup>
             <div className="py-1 px-4 align-items-center">
-              <p class="text-muted fst-italic" style={{ fontSize: "13px" }}>
+              <p className="text-muted fst-italic" style={{ fontSize: "13px" }}>
                 Recommend using rectangle photo (450px x 150px){" "}
               </p>
             </div>
