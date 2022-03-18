@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/email-signature-generator/static/css/main.5f8cf742.css",
-    "main.js": "/email-signature-generator/static/js/main.4a200616.js",
+    "main.css": "/email-signature-generator/static/css/main.50fd2b17.css",
+    "main.js": "/email-signature-generator/static/js/main.18c82d86.js",
     "static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg": "/email-signature-generator/static/media/andrea-ferrario-3WgPZbsDSkE-unsplash.f5522991bebfade8ea23.jpg",
     "static/media/IMG_7248_2.jpg": "/email-signature-generator/static/media/IMG_7248_2.a3433c917048f075ec33.jpg",
     "static/media/PPTelegraf-UltraBold.otf": "/email-signature-generator/static/media/PPTelegraf-UltraBold.c7dfda2145c1bb9ee3e9.otf",
@@ -27,12 +27,14 @@
     "static/media/tumblr.png": "/email-signature-generator/static/media/tumblr.bcd495bddcffa2335bcc.png",
     "static/media/linkedin.png": "/email-signature-generator/static/media/linkedin.b97c92768b3f3adf0083.png",
     "static/media/behance.png": "/email-signature-generator/static/media/behance.354dfa151259a7d3ff16.png",
+    "static/media/banner-placeholder.jpg": "/email-signature-generator/static/media/banner-placeholder.3adc3edd7d804e77121f.jpg",
+    "static/media/Blank-profile.png": "/email-signature-generator/static/media/Blank-profile.d69425eb5675a7631bfc.png",
     "index.html": "/email-signature-generator/index.html",
-    "main.5f8cf742.css.map": "/email-signature-generator/static/css/main.5f8cf742.css.map",
-    "main.4a200616.js.map": "/email-signature-generator/static/js/main.4a200616.js.map"
+    "main.50fd2b17.css.map": "/email-signature-generator/static/css/main.50fd2b17.css.map",
+    "main.18c82d86.js.map": "/email-signature-generator/static/js/main.18c82d86.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f8cf742.css",
-    "static/js/main.4a200616.js"
+    "static/css/main.50fd2b17.css",
+    "static/js/main.18c82d86.js"
   ]
 }
