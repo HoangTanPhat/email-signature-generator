@@ -221,10 +221,17 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
           borderTopLeftRadius: "1rem",
         }}
       >
+
+        {/* =============================================================== */}
+        {/* ======================== GENERAL TAB ========================== */}
+        {/* =============================================================== */}
+
         <Tab eventKey="general" title="General">
           <TabContent
             className="bg-white py-4 px-3"
             style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
               borderBottomLeftRadius: "1rem",
               borderBottomRightRadius: "1rem",
             }}
@@ -389,14 +396,17 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             </InputGroup>
           </TabContent>
         </Tab>
+
         {/* =============================================================== */}
-        {/* ====================== PROFILE TAB ============================ */}
+        {/* ====================== IMAGES TAB ============================ */}
         {/* =============================================================== */}
 
         <Tab eventKey="images" title="Images">
           <TabContent
             className="bg-white py-4 px-3"
             style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
               borderBottomLeftRadius: "1rem",
               borderBottomRightRadius: "1rem",
             }}
@@ -656,10 +666,17 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             </InputGroup>
           </TabContent>
         </Tab>
+
+        {/* =============================================================== */}
+        {/* ======================= SOCIAL TAB ============================ */}
+        {/* =============================================================== */}
+
         <Tab eventKey="social" title="Social">
           <TabContent
             className="bg-white py-4 px-3"
             style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
               borderBottomLeftRadius: "1rem",
               borderBottomRightRadius: "1rem",
             }}

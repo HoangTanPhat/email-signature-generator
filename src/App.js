@@ -27,9 +27,9 @@ function App() {
       className="d-flex align-items-center flex-column pb-5 pt-3 position-relative"
       id="container"
     >
-      <Container className="py-5 d-flex flex-column">
+      <Container className="py-5 d-flex flex-column" style={{height:"100vh"}}>
         <h1
-          className="text-uppercase fw-bold fs-1 text-center m-auto"
+          className="text-uppercase fw-bold text-center m-auto big-headline"
         >
           EMAIL SIGNATURE GENERATOR
         </h1>

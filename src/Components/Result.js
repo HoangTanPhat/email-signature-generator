@@ -102,6 +102,15 @@ export default function Result({
         }}
       >
         <Tab eventKey="template1" title="Template 1" id="template-1">
+        <TabContent
+            className="bg-white py-4 px-3"
+            style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
+              borderBottomLeftRadius: "1rem",
+              borderBottomRightRadius: "1rem",
+            }}
+          >
           <Table
             className="bg-white py-4 px-3"
             style={{
@@ -321,20 +330,29 @@ export default function Result({
               </tr>
             </tbody>
           </Table>
+          </TabContent>
         </Tab>
+
         <Tab eventKey="template2" title="Template 2">
-          <TabContent
+        <TabContent
             className="bg-white py-4 px-3"
             style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
               borderBottomLeftRadius: "1rem",
               borderBottomRightRadius: "1rem",
             }}
-          ></TabContent>
+          >
+          </TabContent>
         </Tab>
+
+
         <Tab eventKey="template3" title="Template 3">
-          <TabContent
+        <TabContent
             className="bg-white py-4 px-3"
             style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
               borderBottomLeftRadius: "1rem",
               borderBottomRightRadius: "1rem",
             }}
