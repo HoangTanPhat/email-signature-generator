@@ -26,3 +26,16 @@ export const addSocialLinksToTemplate = (data) => {
         payload: data
     }
 }
+
+export const addGoogleFonts = (data) => {
+    return {
+        type: 'design/ADD_GOOGLE_FONTS',
+        payload: data
+    }
+}
+export const changeStyle = (data) => {
+    return {
+        type: 'design/CHANGE_STYLE',
+        payload: data
+    }
+}

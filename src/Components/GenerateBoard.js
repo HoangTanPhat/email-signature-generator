@@ -6,26 +6,28 @@ import {
   Tab,
   TabContent,
   FormControl,
+  Button
 } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsX, BsFillXCircleFill, BsFillCloudArrowUpFill } from "react-icons/bs";
 import axios from "axios";
 import socialdata from "./../socialdata";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   addSocialAction,
   removeSocialAction,
   syncEmailInfoData,
   addSocialLinksToTemplate,
+  changeStyle,
+  addGoogleFonts
 } from "./../redux/actions";
 import avatar from "./../img/IMG_7248_2.jpg";
-import uploadImagesToServer from "../useAPI";
-import qs from "qs";
+import {uploadImagesToServer, googleFontsAPI} from "../useAPI";
 import blankProfile from './../img/Blank-profile.png'
+import { v4 as uuid } from 'uuid';
 
-
-export default function GenerateBoard({ setSuccess, success, image, setImage, setIsImageLoading, setIsBannerLoading }) {
+export default function GenerateBoard({ setSuccess, success, image, setImage, setIsImageLoading, setIsBannerLoading, setIsReset, isAnswerYes, setIsAnswerYes }) {
   const [key, setKey] = useState("general");
   const [name, setName] = useState("Hoang Tan Phat");
   const [company, setCompany] = useState("");
@@ -64,6 +66,14 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
   });
   const [socialBrandsList, setSocialBrandsList] = useState(socialdata);
   const [searchIcons, setSearchIcons] = useState("");
+  // const [fontsList, setFontsList] = useState([]);
+  const [fontsName, setFontsName] = useState("Roboto");
+  const [titleColor, setTitleColor] = useState("#000000");
+  const [textColor, setTextColor] = useState("#000000");
+  const [titleSize, setTitleSize] = useState(32);
+  const [textSize, setTextSize] = useState(16);
+
+  // const [fontsFields, setFontsName] = useState([]);
 
   const imageReaderRef = useRef(null);
   const imageInputRef = useRef(null);
@@ -75,7 +85,8 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
 
   const dispatch = useDispatch();
   const socialListAdded = useSelector((state) => state.socialList);
-
+  const fontsList = useSelector((list) => list.font);
+  
   const handleEventImageUpload = (reader) => {
     const url = reader.result;
     const request = uploadImagesToServer(url);
@@ -151,6 +162,14 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
     dispatch(removeSocialAction(id));
   };
 
+  // const handleChangeFonts = (e) => {
+  //   console.log(e.target.value)
+  //   setFontsName(e.target.value)
+  // }
+  const handleResetStyle = () => {
+    setIsReset(true);
+  }
+
   useEffect(() => {
     const info = {
       name: name,
@@ -198,6 +217,25 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
   }, [socialLink]);
 
   useEffect(() => {
+    if(isAnswerYes) {
+      setFontsName("Roboto");
+      setTitleColor("#000000");
+      setTextColor("#000000");
+      setTitleSize(32);
+      setTextSize(16);
+      setIsAnswerYes(false)
+    }
+    dispatch(changeStyle({
+      font: fontsName,
+      titleSize_name: titleSize,
+      titleSize_position: titleSize - 8, 
+      titleColor: titleColor,
+      textColor: textColor,
+      textSize: textSize
+    }))
+  },[titleSize, titleColor, textColor, textSize, fontsName, isAnswerYes])
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setSuccess(false);
     }, 1500);
@@ -207,7 +245,7 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
   return (
     <Container
       fluid
-      className="text-dark app-container m-auto flex-grow-1 p-0"
+      className="text-dark app-container flex-grow-1 p-0"
       style={{ width: "60%", height: "fit-content" }}
     >
       <Tabs
@@ -216,9 +254,9 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
         onSelect={(k) => setKey(k)}
         className="d-flex flex-grow-1"
         style={{
-          backgroundColor: "#f1f1f1",
-          borderTopRightRadius: "1rem",
-          borderTopLeftRadius: "1rem",
+          backgroundColor: "#f9f9f9",
+          borderTopRightRadius: "0.5rem",
+          borderTopLeftRadius: "0.5rem",
         }}
       >
 
@@ -232,8 +270,8 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
             }}
           >
             <InputGroup
@@ -407,8 +445,8 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
             }}
           >
             <InputGroup
@@ -677,8 +715,8 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
             }}
           >
             <InputGroup
@@ -816,6 +854,158 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
             </div>
           </TabContent>
         </Tab>
+        
+        {/* =============================================================== */}
+        {/* ======================= DESIGN TAB ============================ */}
+        {/* =============================================================== */}
+
+        <Tab eventKey="design" title="Design">
+          <TabContent
+            className="bg-white py-4 px-3"
+            style={{
+              border:'1px solid #dee2e6',
+              borderTop:'0px',
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
+            }}
+          > 
+            
+            {/* <InputGroup
+              className="py-1 px-4 mt-2 align-items-center"
+              style={{
+                borderRadius: "1.2rem",
+                position: "relative !important",
+              }}
+            >
+
+              <Form.Text
+                className="fw-light text-black fs-6"
+                style={{ width: "30%" }}
+              >
+                Font
+              </Form.Text>
+              <Form.Select aria-label="Choose font family" className="fs-6 p-0 flex-grow-1 py-2 px-3 bg-light transition"
+                style={{ borderRadius: "1.2rem" }} value={fontsName} onChange={handleChangeFonts}>
+                <option value="Roboto">Choose your font</option>
+                {fontsList.sort((a,b) => {
+                  const firstA = a.family;
+                  const firstB = b.family;
+                  if(firstA < firstB) return -1;
+                  if(firstA > firstB) return 1;
+                  return 0;
+                }).map((font) => {
+                  const {family, variants, files} = font;
+                  const unique_id = uuid();
+                  return(
+                    <option key={unique_id} value={family}>{family}</option>
+                  )
+                })}
+              </Form.Select>
+            </InputGroup> */}
+
+            <InputGroup
+              className="py-1 px-4 mt-4 align-items-center"
+              style={{
+                borderRadius: "1.2rem",
+                position: "relative !important",
+              }}
+            >
+
+              <Form.Text
+                className="fw-light text-black fs-6"
+                style={{ width: "30%" }}
+              >
+                Title Color
+              </Form.Text>
+              <Form.Control type="color" className="fs-6 p-0 py-2 px-3 bg-light transition"
+                style={{ borderRadius: "1.2rem", width:"auto" }} value={titleColor} onChange={(e) => setTitleColor(e.target.value)}/>
+                
+            </InputGroup>
+
+            <InputGroup
+              className="py-1 px-4 mt-4 align-items-center"
+              style={{
+                borderRadius: "1.2rem",
+                position: "relative !important",
+              }}
+            >
+              <Form.Label
+                className="fw-light text-black fs-6 mb-0"
+                style={{ width: "30%" }}
+              >
+                Title Size
+              </Form.Label>
+              <Form.Range
+                className="fs-6 p-0 flex-grow-1 bg-light bg-gradient transition"
+                type="range"
+                value={titleSize}
+                min="16"
+                max="40"
+                onChange={(e) => setTitleSize(e.target.value)}
+                style={{ width: "auto" }}
+              />
+            </InputGroup>
+
+            <InputGroup
+              className="py-1 px-4 mt-4 align-items-center"
+              style={{
+                borderRadius: "1.2rem",
+                position: "relative !important",
+              }}
+            >
+
+              <Form.Text
+                className="fw-light text-black fs-6"
+                style={{ width: "30%" }}
+              >
+                Text Color
+              </Form.Text>
+              <Form.Control type="color" className="fs-6 p-0 py-2 px-3 bg-light transition"
+                style={{ borderRadius: "1.2rem", width:"auto" }} value={textColor} onChange={(e) => setTextColor(e.target.value)}/>
+                
+            </InputGroup>
+            
+            <InputGroup
+              className="py-1 px-4 mt-4 align-items-center"
+              style={{
+                borderRadius: "1.2rem",
+                position: "relative !important",
+              }}
+            >
+              <Form.Label
+                className="fw-light text-black fs-6 mb-0"
+                style={{ width: "30%" }}
+              >
+                Text Size
+              </Form.Label>
+              <Form.Range
+                className="fs-6 p-0 flex-grow-1 bg-light bg-gradient transition"
+                type="range"
+                value={textSize}
+                min="8"
+                max="20"
+                onChange={(e) => setTextSize(e.target.value)}
+                style={{ width: "auto" }}
+              />
+            </InputGroup>
+            <div className="flex-grow-1 d-flex d-column justify-content-end">
+            <Button
+          className="rounded-pill m-4 transition generate-btn px-5"
+          style={{
+            backgroundColor: "white",
+            backgroundColor: "#f9f9f9",
+            border:'1px solid #dee2e6',
+            backdropFilter: "blur(30px)",
+            color: "rgba(0,0,0,0.9)",
+          }}
+          onClick={handleResetStyle}
+        >
+          Reset Style
+        </Button>
+            </div>
+              
+          </TabContent>
+          </Tab>
       </Tabs>
     </Container>
   );

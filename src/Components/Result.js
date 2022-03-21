@@ -14,17 +14,39 @@ import html2canvas from "html2canvas";
 import blankProfile from "./../img/Blank-profile.png";
 import ReactLoading from "react-loading";
 import bannerPlaceholder from "./../img/banner-placeholder.jpg";
+import { getCurrentCustomStyle, currentCustomStyleSelector } from '../redux/selectors'
 
 export default function Result({
   setSuccess,
   setRequestSent,
   isImageLoading,
   isBannerLoading,
+  isFontDoneLoading
 }) {
   const [copyText, setCopyText] = useState("");
+  const [font, setFont] = useState("");
+  const [titleColor, setTitleColor] = useState("")
+  const [customTitleSize, setCustomTitleSize] = useState();
+  const [isFontDoneRendering, setIsFontDoneRendering] = useState(false);
   const userInfo = useSelector((info) => info.emailInfo);
   const socialLinks = useSelector((link) => link.socialList);
   const socialTemplate = useSelector((item) => item.emailInfo.socialsAdded[0]);
+  // console.log(currentCustomStyle.font)
+  const currentCustomStyle = useSelector((item) => item.style[0])
+  const percentageChange_name = currentCustomStyle.titleSize_name / 32;
+  const percentageChange_position = currentCustomStyle.titleSize_position / 24;
+  
+  // setTitleColor(currentCustomStyle.titleColor)
+  // console.log(currentCustomStyle)
+  // const returnFonts = useSelector((item) => Object.keys(item.font).filter(data => data.family == currentCustomStyle.font), shallowEqual);
+
+  //   const returnFonts = useSelector((item) => {
+  //     if(isFontDoneLoading) {
+  //     return item.font.filter((data) => data.family == item.style[0].font);
+  //     } else return 'Default';
+  //   })
+  // console.log(getCurrentCustomStyle);
+  // console.log(returnFonts);
   // const userInfoWidth = useSelector(width => width.emailInfo.imageWidth);
   const [key, setKey] = useState("template1");
   const [imageWidthDynamic, setImageWidthDynamic] = useState(
@@ -89,16 +111,18 @@ export default function Result({
       document.body.style.overflow="hidden";
   };
   return (
-    <Container className="position-sticky" style={{ top: "20%" }}>
+    <Container className="position-sticky pe-0 mt-4 mt-lg-0 result-container-child" style={{ top: "20%" }}>
       <Tabs
         id="controlled-tab"
         activeKey={key}
         onSelect={(k) => setKey(k)}
         className="d-flex flex-grow-1"
         style={{
-          backgroundColor: "#f1f1f1",
-          borderTopRightRadius: "1rem",
-          borderTopLeftRadius: "1rem",
+          backgroundColor: "#f9f9f9",
+          borderTopRightRadius: "0.5rem",
+          borderTopLeftRadius: "0.5rem",
+          // backgroundColor:"rgba(255,255,255,0.5)"
+
         }}
       >
         <Tab eventKey="template1" title="Template 1" id="template-1">
@@ -107,25 +131,27 @@ export default function Result({
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
+              overflow:"hidden"
             }}
           >
           <Table
             className="bg-white py-4 px-3"
             style={{
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
               borderColor: "white",
+              overflow:"hidden"
             }}
             ref={template1Ref}
           >
             <tbody>
-              <tr className="d-flex flex-row flex-wrap">
+              <tr className="d-flex flex-row">
                 <td
-                  className="d-flex flex-wrap justify-content-center align-items-center p-4"
+                  className="d-flex justify-content-center align-items-center p-4"
                   style={{
-                    width: "30%",
+                    // width: "30%",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
@@ -172,44 +198,44 @@ export default function Result({
                     />
                   </a>
                 </td>
-                <td className="py-3 px-4" style={{ width: "70%" }}>
+                <td className="py-3 px-4">
                   <h2
                     onClick={() => chooseField("fieldName")}
-                    className="fw-bold"
-                    style={{ margin: "0" }}
+                    className="custom-font"
+                    style={{ margin: "0", fontWeight: "700", color: currentCustomStyle.titleColor, fontSize: currentCustomStyle.titleSize_name * percentageChange_name + "px", whiteSpace:"nowrap", textOverflow: "clip", overflow:"hidden", direction: "ltr"}}
                   >
                     {userInfo.name}
                   </h2>
-                  <hr style={{ margin: "0.5rem 0px" }} />
-                  <h4 style={{ margin: "0p" }} className="fw-bold">
+                  <hr style={{ margin: "0.5rem 0px", backgroundColor: "rgba(33,37,41,0.25)" }} />
+                  <h4 style={{ margin: "0p", fontWeight: "700", color: currentCustomStyle.titleColor, fontSize: currentCustomStyle.titleSize_position * percentageChange_position + "px", whiteSpace:"nowrap",  textOverflow: "clip", overflow:"hidden", direction: "ltr" }} className="custom-font">
                     {userInfo.position}
                   </h4>
-                  <span className="info company">{userInfo.company}</span>
+                  <span className="info company custom-font"  style={{color: currentCustomStyle.textColor, fontSize: currentCustomStyle.textSize + 'px', whiteSpace:"nowrap"}} >{userInfo.company}</span>
                   {userInfo.department != " " && (
-                    <span className="info department position-relative">
+                    <span className="info department position-relative custom-font"  style={{color: currentCustomStyle.textColor, fontSize: currentCustomStyle.textSize, whiteSpace:"nowrap"}}>
                       {" "}
                       &#8226; {userInfo.department}
                     </span>
                   )}
                   {userInfo.phone != " " && (
-                    <p className="m-0">
-                      <span className="fw-bold">Phone: </span>
+                    <p className="m-0 custom-font" style={{color: currentCustomStyle.textColor, fontSize: currentCustomStyle.textSize + 'px', whiteSpace:"nowrap"}}>
+                      <span style={{fontWeight: "700", color: currentCustomStyle.titleColor, fontSize: currentCustomStyle.textSize + 'px'}}>Phone: </span>
                       {userInfo.phone}
                     </p>
                   )}
                   {userInfo.email != " " && (
-                    <p className="m-0">
-                      <span className="fw-bold">Email: </span>
+                    <p className="m-0 custom-font" style={{color: currentCustomStyle.textColor, fontSize: currentCustomStyle.textSize + 'px', whiteSpace:"nowrap"}}>
+                      <span  style={{fontWeight: "700", color: currentCustomStyle.titleColor, fontSize: currentCustomStyle.textSize + 'px'}}>Email: </span>
                       {userInfo.email}
                     </p>
                   )}
                   {userInfo.website != " " && (
-                    <p className="m-0">
-                      <span className="fw-bold">Website: </span>
-                      <a href={userInfo.website}>{userInfo.website}</a>
+                    <p className="m-0 custom-font" style={{fontSize: currentCustomStyle.textSize + 'px', whiteSpace:"nowrap"}}>
+                      <span style={{fontWeight: "700", color: currentCustomStyle.titleColor, fontSize: currentCustomStyle.textSize + 'px' }}>Website: </span>
+                      <a href={userInfo.website} style={{fontSize: currentCustomStyle.textSize + 'px'}}>{userInfo.website}</a>
                     </p>
                   )}
-                  <p className="m-0">{userInfo.caption}</p>
+                  <p className="m-0 custom-font" style={{color: currentCustomStyle.textColor, fontSize: currentCustomStyle.textSize + 'px'}}>{userInfo.caption}</p>
                   <table>
                     <tbody>
                       <tr
@@ -302,7 +328,7 @@ export default function Result({
                       style={{
                         margin: "0.5rem 0px",
                         padding: "0px",
-                        backgroundColor: "currentcolor",
+                        backgroundColor: "rgba(33,37,41,0.25)",
                       }}
                     />
                     <a
@@ -339,10 +365,11 @@ export default function Result({
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
             }}
           >
+            <p className="text-center">New template will be updated soon</p>
           </TabContent>
         </Tab>
 
@@ -353,10 +380,13 @@ export default function Result({
             style={{
               border:'1px solid #dee2e6',
               borderTop:'0px',
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
+              borderBottomLeftRadius: "0.5rem",
+              borderBottomRightRadius: "0.5rem",
             }}
-          ></TabContent>
+          >
+            <p className="text-center">New template will be updated soon</p>
+
+          </TabContent>
         </Tab>
       </Tabs>
       <Container className="d-flex flex-row flex-wrap mt-4">
@@ -367,9 +397,12 @@ export default function Result({
             type="button"
             style={{
               backgroundColor: "white",
-              color: "black",
-              boxShadow: "0px 1px 30px rgba(0,0,0,.5)",
-              border: "none",
+              // color: "black",
+              backgroundColor: "#f9f9f9",
+              border:'1px solid #dee2e6',
+              backdropFilter: "blur(30px)",
+              color: "rgba(0,0,0,0.9)",
+              // border: "none",
             }}
             // onClick={() => copyToClipboard(el)}
           >
@@ -381,9 +414,10 @@ export default function Result({
           variant="primary"
           style={{
             backgroundColor: "white",
-            color: "black",
-            boxShadow: "0px 1px 30px rgba(0,0,0,.5)",
-            border: "none",
+            backgroundColor: "#f9f9f9",
+            border:'1px solid #dee2e6',
+            backdropFilter: "blur(30px)",
+            color: "rgba(0,0,0,0.9)",
           }}
           onClick={() => handleSaveAsImage(el)}
         >

@@ -10,9 +10,17 @@
   font-family: 'Telegraf-Bold';
   src: url(./fonts/PPTelegraf-UltraBold.otf);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.custom-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .fw-bold {
   font-family: 'Telegraf-Bold';
 }
+
 .fw-light {
   font-family: 'Telegraf-Light';
 }
@@ -38,7 +46,8 @@ input, select {
   box-shadow: none !important;
 }
 .big-headline {
-  font-size: 10rem !important;
+  /* text-shadow:6px 0px 20px rgba(0,255,9,0.51); */
+  font-size: 3rem !important;
   color:white;
   -webkit-text-stroke: 1px black !important;
 
@@ -129,8 +138,11 @@ input, select {
     padding-bottom: 3rem;
   }
   .app-container {
-    /* width: 80% !important; */
+    width: 100% !important;
     /* height: 80% !important; */
+  }
+  .result-container, .result-container-child {
+    padding:0 !important;
   }
 }
 
@@ -139,8 +151,19 @@ input, select {
     padding-bottom: 3rem;
   }
   .app-container {
-    /* width: 60% !important; */
+    width: 45% !important;
     /* height: 80% !important; */
+  }
+  .result-container {
+    width: 55% !important
+  }
+}
+@media (min-width: 1200px) {
+  .app-container { 
+    width: 60% !important
+  }
+  .result-container {
+    width: 100% !important
   }
 }
 
@@ -151,8 +174,8 @@ input[type="range"]:focus {
   border: none !important;
 }
 .nav-tabs .nav-link {
-  border-top-left-radius: 1rem !important;
-  border-top-right-radius: 1rem !important;
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
   flex-grow: 1;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -199,7 +222,12 @@ li.nav-item button{
 
 .generate-btn:hover {
   font-weight: bold;
-  transform:scale(1.2);
+  transform:scale(1.1);
+}
+.generate-btn:active, .generate-btn:focus{
+  /* box-shadow: none !important; */
+  font-weight:700;
+  box-shadow: 0px 0px 0px 0.1rem rgba(0,0,0,0.1) !important;
 }
 
 table {
@@ -215,3 +243,4 @@ table {
   border-top: 0px !important;
   margin-top: 1px !important; */
 }
+

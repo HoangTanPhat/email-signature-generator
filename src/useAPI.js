@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import axios from "axios";
 import qs from 'qs'
 
-export default async function uploadImagesToServer(url) {
+export async function uploadImagesToServer(url) {
     let responseUrl;
     const key = "be40e701d4a418d0146cc38b1e5adbb5";
     const image = url.split(",").pop();
@@ -24,4 +24,24 @@ export default async function uploadImagesToServer(url) {
 })
     .catch(err => console.log(JSON.stringify(err,null,4)));
   return responseUrl;
+};
+
+export async function googleFontsAPI() {
+    let fontList;
+    const API_KEY = "AIzaSyC-P0Sww1xDRGSbGuXiXNq8Kvuc9hlWbvM";
+    const requestUrl = "https://www.googleapis.com/webfonts/v1/webfonts"
+    const data = qs.stringify({
+        "key": API_KEY,
+        "sort": "alpha"
+    })
+    await axios({
+        method: 'GET',
+        url: requestUrl,
+        params: {
+            key: API_KEY,
+            sort: "popularity"
+        }
+    }).then(response => fontList = response.data.items)
+    .catch(err => console.log(JSON.stringify(err,null,4)))
+    return fontList.filter((item, index) => index < 100);
 }

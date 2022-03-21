@@ -66,6 +66,19 @@ const initState = {
       },
     ],
   },
+  font: [
+
+  ],
+  style: [
+    {
+      font: "Roboto",
+      titleSize_name: 32,
+      titleSize_position: 24,
+      titleColor: "#000000",
+      textColor: "#000000",
+      textSize: 16
+    }
+  ] 
 };
 
 const rootReducer = (state = initState, action) => {
@@ -100,7 +113,18 @@ const rootReducer = (state = initState, action) => {
           socialsAdded: [action.payload],
         },
       };
-
+    case "design/ADD_GOOGLE_FONTS": 
+    return {
+      ...state,
+      font: [
+        ...state.font, action.payload
+      ]
+      }; 
+    case "design/CHANGE_STYLE":
+      return {
+        ...state,
+        style:[action.payload]
+      }
     default:
       return state;
   }
