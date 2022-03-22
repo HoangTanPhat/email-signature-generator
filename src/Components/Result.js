@@ -23,6 +23,7 @@ export default function Result({
   isBannerLoading,
   isFontDoneLoading
 }) {
+  const { ClipboardItem } = window;
   const [copyText, setCopyText] = useState("");
   const [font, setFont] = useState("");
   const [titleColor, setTitleColor] = useState("")
@@ -69,12 +70,13 @@ export default function Result({
     if (item === "fieldName") {
     }
   };
-  const copyToClipboard = (el) => {
+  const handleCopyToClipboard = async (el) => {
+
     var doc = document,
       text = el,
       range,
       selection;
-    console.log(el);
+    // console.log(el);
     if (doc.body.createTextRange) {
       range = doc.body.createTextRange();
       range.moveToElementText(text);
@@ -86,10 +88,34 @@ export default function Result({
       selection.removeAllRanges();
       selection.addRange(range);
     }
-    document.execCommand("copy");
+    try {
+      document.execCommand("copy", false, null);
+    } catch (err) {
+      alert("Can't copy to clipboard, please change to another browsers")
+    }
+
+    // var type = "text/html";
+    // navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+    //   if (result.state == "granted" || result.state == "prompt") {
+    //     const content = document.getElementById("generate-signature-result").innerHTML;
+    // const blob = new Blob([content], { type: "text/plain" });
+    // const richTextInput = new ClipboardItem({ "text/plain": blob });
+    // navigator.clipboard.write([richTextInput]);
+    //   }
+    // });
+    // try{
+    //   console.log(el);
+    //   var blob = new Blob([el], { type });
+    //   var data = [new ClipboardItem({ [type]: blob })];
+    //   await navigator.clipboard.write(data).then(()=> {console.log("Done")}).catch(err => console.log(err));
+    // }
+    // catch {
+
+    // }
     window.getSelection().removeAllRanges();
     setSuccess(true);
   };
+
 
   const handleSaveAsImage = (el) => {
     html2canvas(el, {
@@ -127,6 +153,7 @@ export default function Result({
       >
         <Tab eventKey="template1" title="Template 1" id="template-1">
         <TabContent
+            id="generate-signature-result"
             className="bg-white py-4 px-3"
             style={{
               border:'1px solid #dee2e6',
@@ -390,7 +417,7 @@ export default function Result({
         </Tab>
       </Tabs>
       <Container className="d-flex flex-row flex-wrap mt-4">
-        <CopyToClipboard onCopy={() => copyToClipboard(el)} text={copyText}>
+        {/* <CopyToClipboard onClick={() => handleCopyToClipboard(el)} text={copyText}> */}
           <Button
             className="fs-5 flex-grow-1 rounded-pill mx-4 transition generate-btn"
             variant="primary"
@@ -404,11 +431,11 @@ export default function Result({
               color: "rgba(0,0,0,0.9)",
               // border: "none",
             }}
-            // onClick={() => copyToClipboard(el)}
+            onClick={() => handleCopyToClipboard(el)}
           >
             Copy to Clipboard
           </Button>
-        </CopyToClipboard>
+        {/* </CopyToClipboard> */}
         <Button
           className="fs-5 flex-grow-1 rounded-pill mx-4 transition generate-btn"
           variant="primary"

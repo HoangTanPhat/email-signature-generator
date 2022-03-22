@@ -2,6 +2,8 @@ import React, {useState, useEffect, useRef} from 'react'
 import axios from "axios";
 import qs from 'qs'
 
+// require("dotenv").config();
+
 export async function uploadImagesToServer(url) {
     let responseUrl;
     const key = "be40e701d4a418d0146cc38b1e5adbb5";
@@ -28,7 +30,7 @@ export async function uploadImagesToServer(url) {
 
 export async function googleFontsAPI() {
     let fontList;
-    const API_KEY = "AIzaSyC-P0Sww1xDRGSbGuXiXNq8Kvuc9hlWbvM";
+    const API_KEY = "P0Sww1xDRGSbGuXiXNq8Kvuc9hlWbvM5";
     const requestUrl = "https://www.googleapis.com/webfonts/v1/webfonts"
     const data = qs.stringify({
         "key": API_KEY,

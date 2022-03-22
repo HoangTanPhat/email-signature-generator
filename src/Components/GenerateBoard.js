@@ -132,6 +132,7 @@ export default function GenerateBoard({ setSuccess, success, image, setImage, se
 
   const handleImageWidthChange = (e) => {
     setImageWidth(e.target.value);
+
   };
 
   const handleBannerWidthChange = (e) => {
