@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/email-signature-generator/static/css/main.63da3536.css",
-    "main.js": "/email-signature-generator/static/js/main.82332659.js",
+    "main.js": "/email-signature-generator/static/js/main.a8a4a300.js",
     "static/media/IMG_7248_2.jpg": "/email-signature-generator/static/media/IMG_7248_2.a3433c917048f075ec33.jpg",
     "static/media/PPTelegraf-UltraBold.otf": "/email-signature-generator/static/media/PPTelegraf-UltraBold.c7dfda2145c1bb9ee3e9.otf",
     "static/media/PPTelegraf-Regular.otf": "/email-signature-generator/static/media/PPTelegraf-Regular.14ef6b05efc2391733a1.otf",
@@ -31,10 +31,10 @@
     "index.html": "/email-signature-generator/index.html",
     "static/media/_dotpattern.svg": "/email-signature-generator/static/media/6006bf9295b9d316687ec037_dotpattern.5830f9d6e0963c2e9670.svg",
     "main.63da3536.css.map": "/email-signature-generator/static/css/main.63da3536.css.map",
-    "main.82332659.js.map": "/email-signature-generator/static/js/main.82332659.js.map"
+    "main.a8a4a300.js.map": "/email-signature-generator/static/js/main.a8a4a300.js.map"
   },
   "entrypoints": [
     "static/css/main.63da3536.css",
-    "static/js/main.82332659.js"
+    "static/js/main.a8a4a300.js"
   ]
 }
